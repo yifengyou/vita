@@ -1,0 +1,12 @@
+diff -Nur glibc-2.15/sysdeps/i386/configure glibc-2.15-n/sysdeps/i386/configure
+--- glibc-2.15/sysdeps/i386/configure	2012-03-19 22:56:58.000000000 +0800
++++ glibc-2.15-n/sysdeps/i386/configure	2012-11-19 15:03:31.065017265 +0800
+@@ -632,7 +632,7 @@
+ done
+ 
+ 
+-ac_fn_c_check_header_mongrel "$LINENO" "cpuid.h" "ac_cv_header_cpuid_h" "$ac_includes_default"
++ac_fn_c_check_header_mongrel "$LINENO" "cpuid.h" "ac_cv_header_cpuid_h" ""
+ if test "x$ac_cv_header_cpuid_h" = xyes; then :
+ 
+ else

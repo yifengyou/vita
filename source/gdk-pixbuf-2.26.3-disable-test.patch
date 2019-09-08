@@ -1,0 +1,24 @@
+diff -Nur gdk-pixbuf-2.26.3/gdk-pixbuf/Makefile.am gdk-pixbuf-2.26.3-n/gdk-pixbuf/Makefile.am
+--- gdk-pixbuf-2.26.3/gdk-pixbuf/Makefile.am	2012-04-15 02:11:34.000000000 +0800
++++ gdk-pixbuf-2.26.3-n/gdk-pixbuf/Makefile.am	2013-03-12 01:36:24.618804511 +0800
+@@ -774,7 +774,7 @@
+ 
+ if CROSS_COMPILING
+ else
+-all-local: loaders.cache
++#all-local: loaders.cache
+ endif
+ 
+ if BUILD_DYNAMIC_MODULES
+diff -Nur gdk-pixbuf-2.26.3/gdk-pixbuf/Makefile.in gdk-pixbuf-2.26.3-n/gdk-pixbuf/Makefile.in
+--- gdk-pixbuf-2.26.3/gdk-pixbuf/Makefile.in	2012-08-21 03:28:38.000000000 +0800
++++ gdk-pixbuf-2.26.3-n/gdk-pixbuf/Makefile.in	2013-03-12 01:36:56.582802999 +0800
+@@ -2514,7 +2514,7 @@
+ uninstall-local: uninstall-ms-lib uninstall-def-file
+ 	rm -f $(DESTDIR)$(libdir)/gdk-pixbuf-2.0/$(GDK_PIXBUF_BINARY_VERSION)/loaders.cache
+ 
+-@CROSS_COMPILING_FALSE@all-local: loaders.cache
++#@CROSS_COMPILING_FALSE@all-local: loaders.cache
+ 
+ @BUILD_DYNAMIC_MODULES_TRUE@loaders.cache: $(loader_LTLIBRARIES) gdk-pixbuf-query-loaders$(EXEEXT)
+ @BUILD_DYNAMIC_MODULES_TRUE@	LOADERS=`echo libpixbufloader-*.la` ; \

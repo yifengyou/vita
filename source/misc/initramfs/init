@@ -1,0 +1,39 @@
+#!/bin/bash
+echo "Hello Linux!"
+export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+export ROOTMNT=/root
+export ROFLAG=-r
+mount -n -t devtmpfs udev /dev
+mount -n -t proc proc /proc
+mount -n -t sysfs sysfs /sys
+mount -n -t ramfs ramfs /run
+udevd --daemon
+udevadm trigger --action=add
+udevadm settle
+
+for x in $(cat /proc/cmdline); do
+    case $x in
+    root=*)
+        ROOT=${x#root=}
+        ;;
+    ro)
+        ROFLAG=-r
+        ;;
+    rw)
+        ROFLAG=-w
+        ;;
+    esac
+done
+
+mount ${ROFLAG} ${ROOT} ${ROOTMNT}
+
+# Stop udevd
+udevadm control --exit
+# Move to the real filesystem
+mount -n --move /dev ${ROOTMNT}/dev
+mount -n --move /run ${ROOTMNT}/run
+mount -n --move /proc ${ROOTMNT}/proc
+mount -n --move /sys ${ROOTMNT}/sys
+
+switch_root ${ROOTMNT} /sbin/init
+

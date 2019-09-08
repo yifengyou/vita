@@ -1,0 +1,17 @@
+#!/bin/bash
+mount -o remount,rw /dev/sda2 /
+
+udevd --daemon
+udevadm trigger --action=add
+udevadm settle
+
+ip link set eth0 up
+ip addr add 192.168.56.2/24 dev eth0
+
+mkdir /dev/pts
+mount -n -t devpts devpts /dev/pts
+
+/usr/sbin/sshd
+
+export HOME=/root
+exec /bin/bash -l

@@ -1,0 +1,29 @@
+diff -Nur glibc-2.15/nptl/sysdeps/pthread/pt-initfini.c glibc-2.15-n/nptl/sysdeps/pthread/pt-initfini.c
+--- glibc-2.15/nptl/sysdeps/pthread/pt-initfini.c	2012-01-01 20:16:32.000000000 +0800
++++ glibc-2.15-n/nptl/sysdeps/pthread/pt-initfini.c	2012-11-19 15:07:34.733021712 +0800
+@@ -45,6 +45,11 @@
+ /* Embed an #include to pull in the alignment and .end directives. */
+ asm ("\n#include \"defs.h\"");
+ 
++asm ("\n#if defined __i686 && defined __ASSEMBLER__");
++asm ("\n#undef __i686");
++asm ("\n#define __i686 __i686");
++asm ("\n#endif");
++
+ /* The initial common code ends here. */
+ asm ("\n/*@HEADER_ENDS*/");
+ 
+diff -Nur glibc-2.15/sysdeps/unix/sysv/linux/i386/sysdep.h glibc-2.15-n/sysdeps/unix/sysv/linux/i386/sysdep.h
+--- glibc-2.15/sysdeps/unix/sysv/linux/i386/sysdep.h	2012-01-01 20:16:32.000000000 +0800
++++ glibc-2.15-n/sysdeps/unix/sysv/linux/i386/sysdep.h	2012-11-19 15:08:13.813022426 +0800
+@@ -29,6 +29,10 @@
+ #include <dl-sysdep.h>
+ #include <tls.h>
+ 
++#if defined __i686 && defined __ASSEMBLER__
++#undef __i686
++#define __i686 __i686
++#endif
+ 
+ /* For Linux we can use the system call table in the header file
+ 	/usr/include/asm/unistd.h
