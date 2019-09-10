@@ -26,3 +26,4 @@
 * [构建根文件系统](chapter6/构建根文件系统.md)
 * [构建桌面环境](chapter7/构建桌面环境.md)
 * [linux图形原理探讨](chapter8/linux图形原理探讨.md)
+
