@@ -1,9 +1,10 @@
-# vita
+# 深度探索linux操作系统：系统构建和原理解析
 
 
 ## 本仓库内容
 
 1. vita构建过程
+2. 学习笔记
 
 ```
 Something I hope you know before go into the coding~
@@ -19,6 +20,7 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ## 目录
 
+* [书籍目录](chapter0/书籍目录.md)
 * [书籍目录](chapter0/书籍目录.md)
 * [准备基本环境](chapter1/准备基本环境.md)
 * [工具链](chapter2/工具链.md)
