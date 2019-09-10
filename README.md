@@ -25,10 +25,6 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [准备基本环境](chapter1/准备基本环境.md)
 * [工具链](chapter2/工具链.md)
     * [编译过程](chapter2/工具链/编译过程.md)
-        * [预编译](chapter2/工具链/预编译.md)
-        * [编译](chapter2/工具链/编译.md)
-        * [汇编](chapter2/工具链/汇编.md)
-        * [链接](chapter2/工具链/链接.md)
     * [构建工具链](chapter2/工具链/构建工具链.md)
 * [构建内核](chapter3/构建内核.md)
     * [内核映像组成](chapter3/构建内核/内核映像组成.md)
@@ -45,6 +41,7 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [构建根文件系统](chapter6/构建根文件系统.md)
 * [构建桌面环境](chapter7/构建桌面环境.md)
 * [linux图形原理探讨](chapter8/linux图形原理探讨.md)
+
 
 
 
