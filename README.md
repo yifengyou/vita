@@ -28,19 +28,16 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
     * [构建工具链](chapter2/工具链/构建工具链.md)
 * [构建内核](chapter3/构建内核.md)
     * [内核映像组成](chapter3/构建内核/内核映像组成.md)
-        * [一级推进系统](chapter3/构建内核/一级推进系统.md)
-        * [二级推进系统](chapter3/构建内核/二级推进系统.md)
-        * [有效载荷](chapter3/构建内核/有效载荷.md)
-        * [映像格式](chapter3/构建内核/映像格式.md)
     * [内核映像构建过程](chapter3/构建内核/内核映像构建过程.md)
-        * [kbuild工作原理及分析](chapter3/构建内核/kbuild工作原理及分析.md)
     * [配置内核](chapter3/构建内核/配置内核.md)
     * [构建基本根文件系统](chapter3/构建内核/构建基本根文件系统.md)
+    * [kbuild工作原理及分析](chapter3/构建内核/kbuild工作原理及分析.md)
 * [构建initramfs](chapter4/构建initramfs.md)
 * [从内核空间到用户空间](chapter5/从内核空间到用户空间.md)
 * [构建根文件系统](chapter6/构建根文件系统.md)
 * [构建桌面环境](chapter7/构建桌面环境.md)
 * [linux图形原理探讨](chapter8/linux图形原理探讨.md)
+
 
 
 
