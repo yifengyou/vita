@@ -23,7 +23,6 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 ## 相关站点
 
 * GitHub地址:<https://github.com/yifengyou/vita>
-* GitBook地址:<https://yifengyou.gitbooks.io/vita/content/>
 * GitPage地址:<https://yifengyou.github.io/vita/>
 
 ## 目录
