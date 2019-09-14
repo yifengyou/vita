@@ -9,7 +9,6 @@
 * 此外，本书还对编译链接技术（尤其是动态加载和链接技术）和图形系统进行了原理性的探讨，这部分内容非常珍贵。
 * 豆瓣书评[《一本俯瞰Linux系统全局的书籍》](https://book.douban.com/review/6581603/)
 
-
 ## 本仓库内容
 
 1. vita构建过程
@@ -56,8 +55,6 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [构建根文件系统](chapter6/构建根文件系统.md)
 * [构建桌面环境](chapter7/构建桌面环境.md)
 * [linux图形原理探讨](chapter8/linux图形原理探讨.md)
-
-
 
 ## 参考博客
 
