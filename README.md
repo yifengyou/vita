@@ -55,6 +55,10 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [构建桌面环境](chapter7/构建桌面环境.md)
 * [linux图形原理探讨](chapter8/linux图形原理探讨.md)
 
+## 经典图示
+
+![20191012_184121_48](image/20191012_184121_48.png) 
+
 ## 参考博客
 
 * <https://blog.csdn.net/RichardYSteven/article/details/52930533>

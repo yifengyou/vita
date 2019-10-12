@@ -1,8 +1,8 @@
 <!-- MDTOC maxdepth:6 firsth1:1 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
 
 - [initramfs原理探讨](#initramfs原理探讨)   
-   - [什么是ramdisk](#什么是ramdisk)   
-   - [什么是ramfs](#什么是ramfs)   
+   - [什么是ramfs(内存文件系统)](#什么是ramfs内存文件系统)   
+   - [什么是ramdisk(内存磁盘)](#什么是ramdisk内存磁盘)   
    - [什么是initramfs](#什么是initramfs)   
    - [什么是tmpfs](#什么是tmpfs)   
    - [什么是rootfs？](#什么是rootfs？)   
@@ -15,7 +15,15 @@
 
 ![20190914_124454_14](image/20190914_124454_14.png)
 
-## 什么是ramdisk
+* 启动盘经过这几种发展：**ramdisk -> ramfs -> initramfs**
+
+## 什么是ramfs(内存文件系统)
+
+* Ramfs 是一个```空间大小动态可变```的基于 RAM 的文件系统，它是Linux 用来实现磁盘缓存（page cache and dentry cache）的文件系统。
+* ramfs 是一个仅存在与内存中文件系统，它没有后备存储（例如磁盘），也就是说 ramfs 文件系统所管理的文件都是存放在内存中，而不存放在磁盘中，如果计算机掉电关闭，那么 ramfs 文件系统中所有文件也就都没有了。
+* 当普通磁盘中的文件被操作系统加载到内存中时，内核会分配 page 来存储文件中的内容，然后进程通过读写内存中文件对应的 page 实现对文件的读写修改操作，当完成了所有的读写操作之后，文件对应的 page 就会被标记为脏页，然后在合适的时机被操作系统写回到原来的磁盘中对应的文件中，内存中原来存放这些文件的 page 就会被标记为干净，最后被系统回收重新使用。而 ramfs 文件系统中的文件当同样被加载到内存中 page 进行读写操作之后，它对应的 page 并不会被标记为脏页，因为 ramfs 中文件没有下级的后备存储器（例如，磁盘），也就没有了写回后备存储器的操作，所以为它分配的这些 page 也就无法回收了。
+
+## 什么是ramdisk(内存磁盘)
 
 * ramdisk基于内存的块设备，具备块设备的一切属性
 * 一旦创建，大小固定，不可动态调整
@@ -23,17 +31,13 @@
 * 2.4及更早版本使用ramdisk构建initrd
 
 
-## 什么是ramfs
 
-* Ramfs 是一个```空间大小动态可变```的基于 RAM 的文件系统，它是Linux 用来实现磁盘缓存（page cache and dentry cache）的文件系统。
-* ramfs 是一个仅存在与内存中文件系统，它没有后备存储（例如磁盘），也就是说 ramfs 文件系统所管理的文件都是存放在内存中，而不存放在磁盘中，如果计算机掉电关闭，那么 ramfs 文件系统中所有文件也就都没有了。
-* 当普通磁盘中的文件被操作系统加载到内存中时，内核会分配 page 来存储文件中的内容，然后进程通过读写内存中文件对应的 page 实现对文件的读写修改操作，当完成了所有的读写操作之后，文件对应的 page 就会被标记为脏页，然后在合适的时机被操作系统写回到原来的磁盘中对应的文件中，内存中原来存放这些文件的 page 就会被标记为干净，最后被系统回收重新使用。而 ramfs 文件系统中的文件当同样被加载到内存中 page 进行读写操作之后，它对应的 page 并不会被标记为脏页，因为 ramfs 中文件没有下级的后备存储器（例如，磁盘），也就没有了写回后备存储器的操作，所以为它分配的这些 page 也就无法回收了。
 
 ## 什么是initramfs
 
 * initramfs 是一种以 cpio 格式压缩后的 rootfs 文件系统，它通常和 Linux 内核文件一起被打包成 boot.img 作为启动镜像
-* BootLoader 加载 boot.img，并启动内核之后，内核接着就对 cpio 格式的 initramfs 进行解压，并将解压后得到的 rootfs 加载进内存，最后内核会检查 rootfs 中是否存在 init 可执行文件（该 init 文件本质上是一个执行的 shell 脚本），如果存在，就开始执行 init 程序并创建 Linux 系统用户空间 PID 为 1 的进程，然后将磁盘中存放根目录内容的分区真正地挂载到 / 根目录上，最后通过 exec chroot . /sbin/init 命令来将 rootfs 中的根目录切换到挂载了实际磁盘分区文件系统中，并执行 /sbin/init 程序来启动系统中的其他进程和服务。
-* 基于ramfs开发initramfs，取代了initrd
+* BootLoader 加载 boot.img，并启动内核之后，内核接着就对 cpio 格式的 initramfs 进行解压，并将解压后得到的 rootfs 加载进内存，最后内核会检查 rootfs 中是否存在 init 可执行文件（该 init 文件本质上是一个执行的 shell 脚本），如果存在，就开始执行 init 程序并创建 Linux 系统用户空间 PID 为 1 的进程，然后将磁盘中存放根目录内容的分区真正地挂载到 / 根目录上，最后通过 ```exec chroot . /sbin/init``` 命令来将 rootfs 中的根目录切换到挂载了实际磁盘分区文件系统中，并执行 ```/sbin/init``` 程序来启动系统中的其他进程和服务。
+* **基于ramfs开发initramfs，取代了initrd**
 
 ## 什么是tmpfs
 
