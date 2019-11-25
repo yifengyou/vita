@@ -27,6 +27,7 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ## 目录
 
+* [快速入门](docs/快速入门.md)
 * [准备基本环境](docs/准备基本环境.md)
 * [工具链](docs/工具链.md)
     * [编译过程](docs/工具链/编译过程.md)
