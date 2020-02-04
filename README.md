@@ -1,8 +1,8 @@
-# 深度探索linux操作系统：系统构建和原理解析
+# 《深度探索linux操作系统:系统构建和原理解析》学习笔记
 
 ![20190910_165913_77](image/20190910_165913_77.png)
 
-《**深度探索linux操作系统：系统构建和原理解析**》是探索linux操作系统原理的里程碑之作，在众多的同类书中独树一帜。
+《**深度探索linux操作系统:系统构建和原理解析**》是探索linux操作系统原理的里程碑之作，在众多的同类书中独树一帜。
 
 * 它颠覆和摒弃了传统的从阅读linux内核源代码着手学习linux操作系统原理的方式，而是基于实践，以从零开始构建一个完整的linux操作系统的过程为依托，指引读者在实践中去探索操作系统的本质。
 * 这种方式的妙处在于，让读者先从宏观上全面认清一个完整的操作系统中都包含哪些组件，各个组件的作用，以及各个组件间的关系，从微观上深入理解系统各个组件的原理，帮助读者达到事半功倍的学习效果，这是作者潜心研究linux操作系统10几年的心得和经验，能避免后来者在学习中再走弯路。
@@ -11,8 +11,8 @@
 
 ## 本仓库内容
 
-1. vita构建过程
-2. 《深度探索linux操作系统：系统构建和原理解析》学习笔记
+1.  vita 实验系统构建过程
+2. 《深度探索linux操作系统:系统构建和原理解析》学习笔记
 
 ```
 Something I hope you know before go into the coding~
@@ -22,8 +22,9 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ## 相关站点
 
-* GitHub地址 : <https://github.com/yifengyou/vita>
-* GitPage地址 : <https://yifengyou.github.io/vita/>
+* GitBook 地址 : <https://yifengyou.gitbooks.io/learn-vita/content/>
+* GitHub 地址 : <https://github.com/yifengyou/vita>
+* GitPage 地址 : <https://yifengyou.github.io/vita/>
 
 ## 目录
 
@@ -32,6 +33,13 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [工具链](docs/工具链.md)
     * [编译过程](docs/工具链/编译过程.md)
     * [构建工具链](docs/工具链/构建工具链.md)
+    * [实验](docs/工具链/实验.md)
+        * [1. bintuils编译](docs/工具链/实验/bintuils编译.md)
+        * [2. gcc-freestanding编译](docs/工具链/实验/gcc-freestanding编译.md)
+        * [3. kernelheader编译](docs/工具链/实验/kernelheader编译.md)
+        * [4. glibc编译](docs/工具链/实验/glibc编译.md)
+        * [5. 完整gcc编译](docs/工具链/实验/完整gcc编译.md)
+        * [6. pkg-config配置](docs/工具链/实验/pkg-config配置.md)
 * [构建内核](docs/构建内核.md)
     * [内核映像组成](docs/构建内核/内核映像组成.md)
     * [内核映像构建过程](docs/构建内核/内核映像构建过程.md)
@@ -56,8 +64,15 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [附录-书籍目录](docs/书籍目录.md)
 * [附录-书籍勘误](docs/书籍勘误.md)
 
+## vita实验环境
+
+**Win 10(1909) + VMware 15 Pro + ubuntu-12.10-desktop-i386.iso**
+
+![20200204_101451_28](image/20200204_101451_28.png)
 
 ## 经典图示
+
+![20200204_111221_41](image/20200204_111221_41.png)
 
 ![20191012_184121_48](image/20191012_184121_48.png)
 

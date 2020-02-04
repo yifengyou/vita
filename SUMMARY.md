@@ -6,6 +6,13 @@
 * [工具链](docs/工具链.md)
     * [编译过程](docs/工具链/编译过程.md)
     * [构建工具链](docs/工具链/构建工具链.md)
+    * [实验](docs/工具链/实验.md)
+        * [1. bintuils编译](docs/工具链/实验/bintuils编译.md)
+        * [2. gcc-freestanding编译](docs/工具链/实验/gcc-freestanding编译.md)
+        * [3. kernelheader编译](docs/工具链/实验/kernelheader编译.md)
+        * [4. glibc编译](docs/工具链/实验/glibc编译.md)
+        * [5. 完整gcc编译](docs/工具链/实验/完整gcc编译.md)
+        * [6. pkg-config配置](docs/工具链/实验/pkg-config配置.md)
 * [构建内核](docs/构建内核.md)
     * [内核映像组成](docs/构建内核/内核映像组成.md)
     * [内核映像构建过程](docs/构建内核/内核映像构建过程.md)
@@ -29,4 +36,3 @@
 * [linux图形原理探讨](docs/linux图形原理探讨.md)
 * [附录-书籍目录](docs/书籍目录.md)
 * [附录-书籍勘误](docs/书籍勘误.md)
-
