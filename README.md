@@ -22,7 +22,7 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ## 相关站点
 
-* GitBook 地址 : <https://yifengyou.gitbooks.io/learn-vita/content/>
+* GitBook 地址 : <https://yifengyou.gitbooks.io/learn-vita/content/> **[废弃:仓库超 256 MB]**
 * GitHub 地址 : <https://github.com/yifengyou/vita>
 * GitPage 地址 : <https://yifengyou.github.io/vita/>
 
@@ -74,7 +74,11 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ![20200204_111221_41](image/20200204_111221_41.png)
 
+![20200204_211217_33](image/20200204_211217_33.png)
+
 ![20191012_184121_48](image/20191012_184121_48.png)
+
+![20200204_211233_84](image/20200204_211233_84.png) 
 
 ## 参考博客
 
