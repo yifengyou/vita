@@ -46,6 +46,10 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
     * [配置内核](docs/构建内核/配置内核.md)
     * [构建基本根文件系统](docs/构建内核/构建基本根文件系统.md)
     * [kbuild工作原理及分析](docs/构建内核/kbuild工作原理及分析.md)
+    * [实验](docs/构建内核/实验.md)
+        * [7. 编译并配置内核支持SATA硬盘](docs/构建内核/实验/编译并配置内核支持SATA硬盘.md)
+        * [8. 编译并配置内核支持EXT4和ELF](docs/构建内核/实验/编译并配置内核支持EXT4和ELF.md)
+        * [9. 构建基本根文件系统](docs/构建内核/实验/构建基本根文件系统.md)
 * [构建initramfs](docs/构建initramfs.md)
     * [initramfs原理探讨](docs/构建initramfs/initramfs原理探讨.md)
     * [配置内核支持initramfs](docs/构建initramfs/配置内核支持initramfs.md)
@@ -78,7 +82,7 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ![20191012_184121_48](image/20191012_184121_48.png)
 
-![20200204_211233_84](image/20200204_211233_84.png) 
+![20200204_211233_84](image/20200204_211233_84.png)
 
 ## 参考博客
 

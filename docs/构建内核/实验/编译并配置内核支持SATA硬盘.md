@@ -21,6 +21,7 @@
 
 set -e
 source functions
+source crosscompiler
 
 if [ `whoami` != "root" ]; then
         echoblue "Need root privilege!"
