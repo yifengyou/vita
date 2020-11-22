@@ -16,13 +16,6 @@
 <!-- /MDTOC -->
 # initramfs原理探讨-为什么需要initramfs
 
-![20190914_124454_14](image/20190914_124454_14.png)
-
-1. 为了宏内核尽可能小
-2. 为了支持尽可能多的外围设备，驱动分阶段加载
-3. 按需加载驱动
-4. 鸡和蛋的问题，实质就是先加载磁盘驱动再加载根文件系统，还是先加载根文件系统再加载磁盘驱动
-5. initramfs作为临时根，主要用来提供内核加载磁盘等常用驱动，用来进一步加载最终的根文件系统
 
 ## initramfs的几个发展阶段
 
@@ -30,7 +23,7 @@
 * initrd使用了ramdisk
 * initramfs使用了ramfs
 * Initramfs机制比initrd机制要优越，是一种较新的实现方式
-* **现阶段流行的Linux发行版均使用initramfs，但是名字却都是initrd.img**
+* **现阶段流行的Linux发行版均使用initramfs，但是名字却还是initrd.img**
 
 启动盘经过发展阶段：
 
@@ -166,8 +159,13 @@
 
 ![20190914_160143_02](image/20190914_160143_02.png)
 
-
 ## 解压initramfs到rootfs
+
+
+
+* "内核将Bootloader加载到内存中的initramfs中的文件解压到rootfs中"这句话的意思，Bootloader，比如grub，配置文件中的菜单项，每一个菜单项包括两个内容，一个是内核，一个是initrd。bootloader将initrd加载到内存，解压的工作是内核自己干的，所以initrd无法正常使用的话应该检查内核而不是grub
+
+
 
 ![20190914_160347_69](image/20190914_160347_69.png)
 
@@ -182,7 +180,18 @@
 ![20190914_161045_99](image/20190914_161045_99.png)
 
 * panic是英文中是惊慌的意思，Linux Kernel panic正如其名，linux kernel不知道如何走了，它会尽可能把它此时能获取的全部信息都打印出来。
+
 * 启动过程尽可能输出错误，要输出到console，就要有个/dev/console，那么不管怎样就得有initramfs
+
+* tty是一类char设备的统称，它们有相同的特性，比如对ctrl^C的处理，驱动使用tty_register_driver注册一个tty。
+
+  /dev/console是一个虚拟的tty，它映射到真正的tty上，console有多种含义，这里特指printk输出的设备，驱动使用register_console注册一个console
+
+* **console和tty有很大区别：console是个只输出的设备，功能很简单，只能在内核中访问；tty是char设备，可以被用户程序访问。**
+
+  **实际的驱动比如串口对一个物理设备会注册两次，一个是tty，一个是console，并通过在console的结构中记录tty的主次设备号建立了联系。**
+
+  **在内核中，tty和console都可以注册多个。当内核命令行上指定console=ttyS0之类的参数时，首先确定了printk实际使用那个console作为输出，其次由于console和tty之间的对应关系，打开/dev/console时，就会映射到相应的tty上。用一句话说：/dev/console将映射到默认console对应的tty上。顺便说一句，console=ttyS0和/dev/ttyS0包含相同的设备名字完全是巧合，不同也没事**
 
 ![20191012_194522_28](image/20191012_194522_28.png)
 

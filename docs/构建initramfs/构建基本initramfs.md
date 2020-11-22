@@ -52,21 +52,28 @@ kernel_thread(kernel_init, NULL, CLONE_FS);
 * kernel_init函数将完成设备驱动程序的初始化，并调用init_post函数启动用户空间的init进程。
 * 由0号进程创建1号进程（内核态），1号内核线程负责执行内核的部分初始化工作及进行系统配置，并创建若干个用于高速缓存和虚拟主存管理的内核线程。
 
-## 脚本
+## 完整脚本 10.build_basic_initramfs.sh
 
-```
-mkdir initramfs
+内核编译过程自己手动配置吧，这个要是也自动化，也不是不行，就是没这个必要哈~
 
-vi /vita/initramfs/initramfs
-
+```shell
 #!/bin/bash
 
+set -xe
+
+[ -e initramfs ] && rm -rf initramfs
+mkdir initramfs && cd initramfs
+
+cat > init << EOF
+#!/bin/bash
+echo "Hello Linux!"
+echo "Hello Linux!"
+echo "Hello Linux!"
 echo "Hello Linux!"
 exec /bin/bash
+EOF
 
 chmod a+x init
-
-cd /vita/initramfs/
 
 mkdir bin
 cp ../sysroot/bin/bash bin/
@@ -84,18 +91,25 @@ ldd lib/libc.so.6
 ldd lib/ld-linux.so.2
 ldd lib/libgcc_s.so.1
 
-find . | cpio -o -H newc |gzip -9 > /vita/sysroot/boot/initrd.img
-cp /vita/sysroot/boot/initrd.img /vita/boot
+tree lib
 
-menuentry 'vita'{
-  set root='hd0,msdos2'
-  linux /boot/bzImage root=/dev/sda2 ro
-  initrd /boot/initrd.img
-}
-
+find . | cpio -o -H newc |gzip -9 > /vita/10.initrd.img
+cp /vita/10.initrd.img /vita/boot
 
 
 ```
+
+grub配置菜单，为了保存所有实验，因此对内核以及initrd都增加实验编号
+
+```
+menuentry 'vita-10'  {
+        set root='(hd0,2)'
+        linux   /boot/10.bzImage root=/dev/sda2 ro
+	initrd /boot/10.initrd.img
+}
+```
+
+
 
 ![20190914_173425_38](image/20190914_173425_38.png)
 
@@ -103,10 +117,4 @@ menuentry 'vita'{
 
 
 
----
 
-PS:
-
-![20190914_173726_23](image/20190914_173726_23.png)
-
-这，我能咋办。。。
