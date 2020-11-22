@@ -36,6 +36,8 @@
         * [11. 配置devtmpfs](docs/构建initramfs/实验/配置devtmpfs.md)
         * [12. 将硬盘控制器配置为模块](docs/构建initramfs/实验/将硬盘控制器配置为模块.md)
         * [13. 自动加载硬盘控制器驱动](docs/构建initramfs/实验/自动加载硬盘控制器驱动.md)
+        * [14. 挂载根文件系统](docs/构建initramfs/实验/挂载根文件系统.md)
+        * [14. 切换到根文件系统](docs/构建initramfs/实验/切换到根文件系统.md)
 * [从内核空间到用户空间](docs/从内核空间到用户空间.md)
     * [加载Linux操作系统](docs/从内核空间到用户空间/加载Linux操作系统.md)
     * [解压内核](docs/从内核空间到用户空间/解压内核.md)
